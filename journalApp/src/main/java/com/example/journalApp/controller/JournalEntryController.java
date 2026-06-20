@@ -30,7 +30,7 @@ public class JournalEntryController {
         return true;
     }
 
-    @PutMapping
+    @PutMapping("/id/{myId}")
     public JournalEntry updateEntryById(@PathVariable Long myId, @RequestBody JournalEntry myEntry){
         return journalEntries.put(myId,myEntry);
     }
