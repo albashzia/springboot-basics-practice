@@ -20,6 +20,10 @@ public class JournalEntryController {
         return new ArrayList<>(journalEntries.values());
     }
 
+    @GetMapping("/id/{myId}")
+    public JournalEntry getEntryById(@PathVariable Long myId){
+        return journalEntries.get(myId);
+    }
     @PostMapping
     public boolean createEntry(@RequestBody JournalEntry myEntry){
         journalEntries.put(myEntry.getId(),myEntry);
