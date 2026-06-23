@@ -3,7 +3,9 @@ package com.example.journalApp.entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+import java.util.Date;
+
+@Document(collation = "journal_entries")
 public class JournalEntry {
 
     @Id
@@ -11,6 +13,8 @@ public class JournalEntry {
 
     private String title;
     private String content;
+    private Date date;
+
 
     public String getId() {
         return id;
@@ -34,5 +38,13 @@ public class JournalEntry {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
