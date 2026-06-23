@@ -1,11 +1,14 @@
 package com.example.journalApp.entity;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class JournalEntry {
 
+    @Id
     private String id;
+
     private String title;
     private String content;
 
