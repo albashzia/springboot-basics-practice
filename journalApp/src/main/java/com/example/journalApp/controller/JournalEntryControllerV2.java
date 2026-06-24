@@ -3,16 +3,14 @@
 
 import com.example.journalApp.entity.JournalEntry;
 import com.example.journalApp.service.JournalEntryService;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-@RestController
+ @RestController
 @RequestMapping("/journal")
 public class JournalEntryControllerV2 {
 
@@ -25,8 +23,8 @@ public class JournalEntryControllerV2 {
     }
 
     @GetMapping("/id/{myId}")
-    public JournalEntry getEntryById(@PathVariable Long myId){
-        return null;
+    public JournalEntry getEntryById(@PathVariable ObjectId myId){
+        return journalEntryService.findById(myId).orElse(null);
     }
     @PostMapping
     public JournalEntry createEntry(@RequestBody JournalEntry myEntry){
