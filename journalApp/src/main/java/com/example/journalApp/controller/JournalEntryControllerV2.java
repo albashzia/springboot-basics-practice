@@ -20,7 +20,7 @@ public class JournalEntryControllerV2 {
 
     @GetMapping
     public List<JournalEntry> getAll(){
-        return null;
+        return journalEntryService.getAll();
     }
 
     @GetMapping("/id/{myId}")
