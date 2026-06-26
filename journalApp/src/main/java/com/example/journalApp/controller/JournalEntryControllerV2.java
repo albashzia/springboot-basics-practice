@@ -59,8 +59,8 @@ public class JournalEntryControllerV2 {
         return journalEntry;
     }
     @DeleteMapping("/id/{myId}")
-    public boolean deleteEntryById(@PathVariable ObjectId myId){
+    public ResponseEntity<?> deleteEntryById(@PathVariable ObjectId myId){
         journalEntryService.deleteById(myId);
-        return true;
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
