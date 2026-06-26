@@ -5,6 +5,9 @@ import com.example.journalApp.entity.JournalEntry;
 import com.example.journalApp.service.JournalEntryService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -23,8 +26,12 @@ public class JournalEntryControllerV2 {
     }
 
     @GetMapping("/id/{myId}")
-    public JournalEntry getEntryById(@PathVariable ObjectId myId){
-        return journalEntryService.findById(myId).orElse(null);
+    public ResponseEntity<JournalEntry> getEntryById(@PathVariable ObjectId myId){
+        Optional<JournalEntry> journalEntry =  journalEntryService.findById(myId);
+        if(journalEntry.isPresent()){
+            return new ResponseEntity<>(journalEntry.get(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
     @PostMapping
     public JournalEntry createEntry(@RequestBody JournalEntry myEntry){
