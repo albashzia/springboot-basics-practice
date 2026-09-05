@@ -1,4 +1,6 @@
- package com.example.journalApp.controller;
+// Controller class to deal with journal entry operations
+
+package com.example.journalApp.controller;
 
 
 import com.example.journalApp.entity.JournalEntry;
