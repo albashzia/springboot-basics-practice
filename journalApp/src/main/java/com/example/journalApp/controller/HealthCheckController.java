@@ -1,5 +1,6 @@
-package com.example.journalApp.controller;
+// Class to check if the controller is functional or not
 
+package com.example.journalApp.controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
