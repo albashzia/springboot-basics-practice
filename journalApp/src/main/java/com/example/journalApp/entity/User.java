@@ -11,18 +11,24 @@ import org.springframework.data.mongodb.core.mapping.Document; // Map this Java 
 import java.util.ArrayList;
 import java.util.List;
 
+// Maps this Java class to a MongoDB collection named "users"
 @Document(collection = "users")
+
+// Automatically generates methods, using Lombok
 @Data
 public class User {
 
-    @Id
+    @Id // Defines the field as primary identifier
     private ObjectId id;
-    @Indexed(unique = true)
-    @NonNull
+
+    @Indexed(unique = true) // Creates a unique index in MongoDB for this field
+    @NonNull // Ensures this field is not null
     private String userName;
-    @NonNull
+
+    @NonNull //Ensures that this field is not null
     private String password;
-    @DBRef
+
+    @DBRef // Establish reference between user and journal entry documents
     private List<JournalEntry> journalEntries = new ArrayList<>();
 
 }
